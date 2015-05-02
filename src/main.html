@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="javascript/compatibility/rAF.js"></script>
 		<script src="javascript/player/player.js"></script>
 		<script src="javascript/sprite/sprite.js"></script>
 		<script src="javascript/input.js"></script>
@@ -24,7 +25,8 @@
 			/* Main loop */
 			document.addEventListener("keydown", input);
 			document.addEventListener("keyup", input);
-			setInterval(function(){update();render();}, 1000/fps);
+			setInterval(function(){update();}, 1000/fps);
+			window.requestAnimationFrame(function(){render();});
 		</script>
 	</body>
 </html>
