@@ -30,5 +30,5 @@ player.prototype.update = function(){
 	if(this.keyState.right){
 		this.x += 2;
 	}
-
+	
 }
