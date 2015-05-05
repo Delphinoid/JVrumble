@@ -13,14 +13,13 @@
 		<canvas id="canvas" width="640" height="360"></canvas>
 		<script type="text/javascript">
 			/* Create a reference to the HTML5 canvas element */
-			var canvas = document.getElementById("canvas");
-			var canvasContext = canvas.getContext("2d");
+			var canvasContext = document.getElementById("canvas").getContext("2d");
 			
 			/* Initialize global variables */
 			var fps = 60;
 			
 			/* Load resources (use function for this in the future) */
-			var testPlayer = new player("test", 0, 0, 0, 0, 0);
+			var testPlayer = new player("test", 0, 0, 320, 180, 0);
 			
 			/* Main loop */
 			document.addEventListener("keydown", input);

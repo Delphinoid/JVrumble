@@ -20,8 +20,10 @@ function player(_name, _character, _skin, _x, _y, _damage){
 	
 	this.x = _x;
 	this.y = _y;
+	this.rotation = 0;
 	this.xSpeed = 0;
 	this.ySpeed = 0;
+	this.xFlip = 1;
 	this.damage = _damage;
 	
 	this.keyState = {up:false, down:false, left:false, right:false, lightAtk: false, 
@@ -50,6 +52,14 @@ player.prototype.update = function(){
 
 player.prototype.renderPlayer = function(){
 	
-	this.character.spr.renderSpr(this.x, this.y, this.character.spr.frameWidth, this.character.spr.frameHeight);
+	/* If the player is moving left, flip his X
+	   If he is moving right, do not flip his X */
+	if(this.xSpeed < 0){
+		this.xFlip = -1;
+	}else if(this.xSpeed > 0){
+		this.xFlip = 1;
+	}
+	
+	this.character.spr.renderSpr(this.x, this.y, this.character.spr.frameWidth, this.character.spr.frameHeight, this.rotation, this.xFlip, 1);
 	
 }

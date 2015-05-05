@@ -54,13 +54,21 @@ sprite.prototype.animate = function(){
 
 }
 
-sprite.prototype.renderSpr = function(_x, _y, _width, _height){
+sprite.prototype.renderSpr = function(_x, _y, _width, _height, _rotation, _xFlip, _yFlip){
+	
+	/* Transform the canvas, and thus the sprite */
+	canvasContext.save();
+	canvasContext.translate(_x, _y);
+	canvasContext.rotate(_rotation * Math.PI / 180);
+	canvasContext.scale(_xFlip, _yFlip);
 	
 	/* Gets frames from left to right, top to bottom */
 	canvasContext.drawImage(this.image,
 							(this.frameWidth * this.currentFrame) % this.image.width,
 							Math.floor((this.frameHeight * this.currentFrame) / this.image.height),
 							this.frameWidth, this.frameHeight,
-							_x, _y, _width, _height);
-
+							-(_width / 2), -(_height / 2), _width, _height);
+	
+	/* Undo the canvas transformations so they do not affect anything else */
+	canvasContext.restore();
 }
