@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<script src="javascript/compatibility/rAF.js"></script>
+		<script src="javascript/sprite/sprite.js"></script>
 		<script src="javascript/player/player.js"></script>
 		<script src="javascript/player/characters/guy.js"></script>
-		<script src="javascript/sprite/sprite.js"></script>
 		<script src="javascript/input.js"></script>
 		<script src="javascript/update.js"></script>
 		<script src="javascript/render.js"></script>
@@ -20,8 +20,7 @@
 			var fps = 60;
 			
 			/* Load resources (use function for this in the future) */
-			var guySpr = new sprite("resources/player/characters/guy0.png", 200, 170, 24, 0, [0, 13]);
-			var testPlayer = new player("guy", new char_guy(), 0, 0, 0, 0);
+			var testPlayer = new player("test", 0, 0, 0, 0, 0);
 			
 			/* Main loop */
 			document.addEventListener("keydown", input);

@@ -10,6 +10,9 @@ function sprite(_src, _frameWidth, _frameHeight, _animationFps, _currentAnim, _a
 	this.currentFrame = 0;
 	this.frameProgress = 0;
 	this.currentAnim = _currentAnim;
+	
+	/* sprite.animations is an array of integers. Each animation contains
+	two integers: one for the first frame and one for the last frame. */
 	this.animations = _animations;
 	
 }
@@ -51,7 +54,7 @@ sprite.prototype.animate = function(){
 
 }
 
-sprite.prototype.render = function(_x, _y, _width, _height){
+sprite.prototype.renderSpr = function(_x, _y, _width, _height){
 	
 	/* Gets frames from left to right, top to bottom */
 	canvasContext.drawImage(this.image,
