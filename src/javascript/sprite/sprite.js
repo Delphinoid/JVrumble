@@ -43,12 +43,12 @@ sprite.prototype.animate = function(){
         }
 		
 		if(this.currentFrame >= this.animations[(this.currentAnim * 2) + 1] + 1){
-            this.currentFrame = this.animations[this.currentAnim];
+            this.currentFrame = this.animations[this.currentAnim * 2];
         }
 		
 	}else{
 	
-		this.currentFrame = this.animations[this.currentAnim];
+		this.currentFrame = this.animations[this.currentAnim * 2];
 		
 	}
 
