@@ -3,6 +3,7 @@
 	<head>
 		<script src="javascript/compatibility/rAF.js"></script>
 		<script src="javascript/sprite/sprite.js"></script>
+		<script src="javascript/prop/prop.js"></script>
 		<script src="javascript/player/player.js"></script>
 		<script src="javascript/player/characters/guy.js"></script>
 		<script src="javascript/input.js"></script>
@@ -19,6 +20,10 @@
 			var fps = 60;
 			
 			/* Load resources (use function for this in the future) */
+			var props = new Array;
+			var background = new prop("props/tempBackground", 0, 0, 0, 640, 360, -1);
+			props.push(background);
+			
 			var testPlayer = new player("test", 0, 0, 320, 180, 0);
 			
 			/* Main loop */
