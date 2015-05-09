@@ -6,6 +6,8 @@
 		<script src="javascript/prop/prop.js"></script>
 		<script src="javascript/player/player.js"></script>
 		<script src="javascript/player/characters/guy.js"></script>
+		<script src="javascript/collision/boxCollision.js"></script>
+		<script src="javascript/collision/hitbox.js"></script>
 		<script src="javascript/input.js"></script>
 		<script src="javascript/update.js"></script>
 		<script src="javascript/render.js"></script>
@@ -22,6 +24,10 @@
 			/* Load resources (use function for this in the future) */
 			var background = new prop("props/tempBackground", 0, 0, 0, 640, 360, [0, 0]);
 			var testPlayer = new player("test", 0, 0, 320, 180, 0);
+			
+			var mapCollision1 = new Array;
+			mapCollision1.push(new hitbox(320, 320, 640, 80, 0));
+			mapCollision1.push(new hitbox(180, 240, 120, 120, 0));
 			
 			/* Main loop */
 			document.addEventListener("keydown", input);
