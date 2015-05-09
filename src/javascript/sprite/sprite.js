@@ -56,6 +56,10 @@ sprite.prototype.animate = function(){
 			
 		}
 		
+	}else{
+		
+		this.currentFrame = this.animations[this.currentAnim * 2];
+		
 	}
 	
 }
