@@ -20,7 +20,8 @@ function sprite(_src, _frameWidth, _frameHeight, _animationFps, _currentAnim, _a
 
 sprite.prototype.animate = function(){
 	
-	if(this.animations != -1){
+	/* Only animate if the current animation is valid */
+	if(this.animations[(this.currentAnim * 2) + 1] > this.animations[this.currentAnim * 2]){
 		
 		/*
 		 *	Increase frameProgress by animationFps / actualFps. Once frameProgress is
@@ -30,7 +31,7 @@ sprite.prototype.animate = function(){
 		 *	of the actual fps.
 		 */
 		this.frameProgress += this.speedModifier;
-		
+			
 		if(this.currentFrame >= this.animations[this.currentAnim * 2] && this.currentFrame <= this.animations[(this.currentAnim * 2) + 1]){
 			
 			if(this. frameProgress >= 1){
@@ -56,7 +57,7 @@ sprite.prototype.animate = function(){
 		}
 		
 	}
-
+	
 }
 
 sprite.prototype.renderSpr = function(_x, _y, _width, _height, _rotation, _xFlip, _yFlip){
@@ -72,7 +73,7 @@ sprite.prototype.renderSpr = function(_x, _y, _width, _height, _rotation, _xFlip
 							(this.frameWidth * this.currentFrame) % this.image.width,
 							Math.floor((this.frameHeight * this.currentFrame) / this.image.height),
 							this.frameWidth, this.frameHeight,
-							-(_width / 2), -(_height / 2), _width, _height);
+							-(_width / 2) , -(_height / 2), _width, _height);
 	
 	/* Undo the canvas transformations so they do not affect anything else */
 	canvasContext.restore();

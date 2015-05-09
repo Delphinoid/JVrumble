@@ -8,5 +8,7 @@ function prop(_name, _x, _y, _rotation, _frameWidth, _frameHeight, _animations){
 }
 
 prop.prototype.renderProp = function(){
-	this.spr.renderSpr(this.x + (this.spr.frameWidth / 2), this.y + (this.spr.frameHeight / 2), this.spr.frameWidth, this.spr.frameHeight, this.rotation, 1, 1);
+	this.spr.renderSpr(this.x + (this.spr.frameWidth / 2), this.y + (this.spr.frameHeight / 2),
+					   this.spr.frameWidth, this.spr.frameHeight,
+					   this.rotation, 1, 1);
 }
