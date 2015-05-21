@@ -10,6 +10,8 @@ function render(){
 		mapCollision1[i].render();
 	}
 	
+	tri.render();
+	
 	requestAnimationFrame(function(){render();});
 	
 }
