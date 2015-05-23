@@ -21,6 +21,8 @@ function player(_name, _character, _skin, _x, _y, _damage){
 	this.x = _x;
 	this.y = _y;
 	this.rotation = 0;
+	this.pivotX = this.character.spr.frameWidth / 2; // Have the player rotate around its bottom-middle point
+	this.pivotY = this.character.spr.frameWidth;
 	this.xSpeed = 0;
 	this.ySpeed = 0;
 	this.xFlip = 1;
@@ -53,13 +55,15 @@ player.prototype.update = function(){
 player.prototype.renderPlayer = function(){
 	
 	/* If the player is moving left, flip his X
-	   If he is moving right, do not flip his X */
+	If he is moving right, do not flip his X */
 	if(this.xSpeed < 0){
 		this.xFlip = -1;
 	}else if(this.xSpeed > 0){
 		this.xFlip = 1;
 	}
 	
-	this.character.spr.renderSpr(this.x, this.y, this.character.spr.frameWidth, this.character.spr.frameHeight, this.rotation, this.xFlip, 1);
+	this.character.spr.renderSpr(this.x, this.y,
+								 this.character.spr.frameWidth, this.character.spr.frameHeight,
+								 this.rotation, this.pivotX, this.pivotY, this.xFlip, 1);
 	
 }
