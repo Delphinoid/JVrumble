@@ -6,11 +6,12 @@ function render(){
 	background.renderProp();
 	testPlayer.renderPlayer();
 	
-	for(i = 0; i < mapCollision1.length; i++){
-		mapCollision1[i].render();
+	for(i = 0; i < rectangleGround.length; i++){
+		rectangleGround[i].render();
 	}
-	
-	tri.render();
+	for(i = 0; i < triangleGround.length; i++){
+		triangleGround[i].render();
+	}
 	
 	requestAnimationFrame(function(){render();});
 	

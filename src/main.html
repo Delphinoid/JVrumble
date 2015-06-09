@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="javascript/compatibility/rAF.js"></script>
-		<script src="javascript/sprite/sprite.js"></script>
-		<script src="javascript/prop/prop.js"></script>
-		<script src="javascript/player/player.js"></script>
-		<script src="javascript/player/characters/guy.js"></script>
+		<script src="javascript/requestAnimationFrame.js"></script>
+		<script src="javascript/sprite.js"></script>
+		<script src="javascript/prop.js"></script>
+		<script src="javascript/player.js"></script>
+		<script src="javascript/playerStageCollision.js"></script>
+		<script src="javascript/findGroundSlope.js"></script>
+		<script src="javascript/characters/guy.js"></script>
 		<script src="javascript/collision/hitbox.js"></script>
 		<script src="javascript/collision/triangle.js"></script>
-		<script src="javascript/collision/boxCollision.js"></script>
+		<script src="javascript/collision/rectangleCollision.js"></script>
+		<script src="javascript/collision/triangleCollision.js"></script>
 		<script src="javascript/collision/lineIntersection.js"></script>
-		<script src="javascript/collision/SATcollision.js"></script>
 		<script src="javascript/input.js"></script>
 		<script src="javascript/update.js"></script>
 		<script src="javascript/render.js"></script>
@@ -21,16 +23,24 @@
 			/* Create a reference to the HTML5 canvas element */
 			var canvasContext = document.getElementById("canvas").getContext("2d");
 			
+			
 			/* Initialize global variables */
 			var fps = 60;
+			
 			
 			/* Load resources (use function for this in the future) */
 			var background = new prop("props/tempBackground", 0, 0, 640, 360, [0, 0]);
 			var testPlayer = new player("test", 0, 0, 320, 180, 0);
-			var mapCollision1 = new Array;
-			mapCollision1.push(new hitbox(0, 280, 640, 80, 0));
-			mapCollision1.push(new hitbox(120, 180, 120, 120, 0));
-			tri = new triangle(240, 280, 300, -100, 1);
+			
+			// Arrays that hold the ground pieces for the stage
+			var rectangleGround = new Array;
+			rectangleGround.push(new hitbox(0, 280, 640, 80, 0));
+			rectangleGround.push(new hitbox(540, 180, 100, 100, 0));
+			var rectangleWalls = new Array;
+			var triangleGround = new Array;
+			triangleGround.push(new triangle(240, 280, 540, 180, 540, 280, 0));
+			var triangleWalls = new Array;
+			
 			
 			/* Main loop */
 			document.addEventListener("keydown", input);

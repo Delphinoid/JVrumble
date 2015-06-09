@@ -1,3 +1,23 @@
+function AABBcollision(r1x, r1y, r1w, r1h, r2x, r2y, r2w, r2h){
+	if((r1x >= r2x && r1x <= r2x + r2w || r2x >= r1x && r2x <= r1x + r1w) &&
+	   (r1y >= r2y && r1y <= r2y + r2h || r2y >= r1y && r2y <= r1y + r1h)){
+		return(true);
+	}
+	return(false);
+}
+
+
+function pointInRectangle(pX, pY, r2x, r2y, r2w, r2h){
+	
+	if((pX >= r2x && pX <= r2x + r2w) && (pY >= r2y && pY <= r2y + r2h)){
+		return(true);
+	}
+	
+	return(false);
+	
+}
+
+
 function rotatedPointX(pX, pY, pivotX, pivotY, rot){
 
     /* Returns the x position of the point (pX, pY) after being
