@@ -6,8 +6,8 @@ function render(){
 	background.renderProp();
 	testPlayer.renderPlayer();
 	
-	for(i = 0; i < mapCollision1.length; i++){
-		mapCollision1[i].render();
+	for(i = 0; i < map1.length; i++){
+		map1[i].render();
 	}
 	
 	requestAnimationFrame(function(){render();});

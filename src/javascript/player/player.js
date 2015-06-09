@@ -14,7 +14,8 @@ function player(_name, _character, _skin, _x, _y, _damage){
 			//this.character = new mrblack(_skin);
 			break;
 		default:
-			this.character = new guy(_skin);
+			this.character = charGuy;
+			this.spr = new sprite("resources/player/characters/guy" + _skin + ".png", 200, 170, 24, 0, [0, 13]);
 			break;
 	}
 	
@@ -27,26 +28,31 @@ function player(_name, _character, _skin, _x, _y, _damage){
 	this.damage = _damage;
 	
 	this.keyState = {up:false, down:false, left:false, right:false, lightAtk: false, 
-					 heavyAtk:false, smash:false, grab:false, shield:false, taunt:false};  
-	
+					 heavyAtk:false, smash:false, grab:false, shield:false, taunt:false};
+		
 }
 
 player.prototype.update = function(){
 	
 	if(this.keyState.up){
-		this.y -= 2;
-	}
-	if(this.keyState.down){
-		this.y += 2;
+		this.ySpeed = -2;
+	}else if(this.keyState.down){
+		this.ySpeed = 2;
+	}else{
+		this.ySpeed = 0;
 	}
 	if(this.keyState.left){
-		this.x -= 2;
-	}
-	if(this.keyState.right){
-		this.x += 2;
+		this.xSpeed = -2;
+	}else if(this.keyState.right){
+		this.xSpeed = 2;
+	}else{
+		this.xSpeed = 0;
 	}
 	
-	this.character.spr.animate();
+	this.x += this.xSpeed;
+	this.y += this.ySpeed;
+	
+	this.spr.animate();
 	
 }
 
@@ -60,6 +66,6 @@ player.prototype.renderPlayer = function(){
 		this.xFlip = 1;
 	}
 	
-	this.character.spr.renderSpr(this.x, this.y, this.character.spr.frameWidth, this.character.spr.frameHeight, this.rotation, this.xFlip, 1);
+	this.spr.renderSpr(this.x, this.y, this.spr.frameWidth, this.spr.frameHeight, this.rotation, this.xFlip, 1);
 	
 }
